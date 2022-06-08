@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1 class="titulo">Módulo de <span>Mascotas</span> </h1>
+        <div class="contenedor-mascotas">
+            <div class="formulario-mascota">
+                <h3>Mascotas</h3>
+                <form action="" id="frm-mascota">
+                    <!-- <p>
+                        <label for="id">Id</label>
+                        <input type="text" id="id" autocomplete="off" />
+                        <p id="errorIdRequerido" class="miError">El id es requerido</p>
+                        <p id="errorIdNumerico" class="miError">El id debe ser numérico</p>
+                    </p> -->
+                   
+                        <input type="hidden" id="index" autocomplete="off" />
+
+                    <p>
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" autocomplete="off">
+                        <p id="errorNombre" class="miError">El eamil no es válido</p>
+                        <p id="errorNombreRequerido" class="miError">El nombre es requerido</p>
+                    </p>
+                    <p>
+                        <label for="edad">Edad</label>
+                        <input type="text" id="edad" autocomplete="off">
+                        <p id="errorEdadRequerido" class="miError">La edad es requerida</p>
+                        <p id="errorEdadNumerico" class="miError">La edad es un número</p>
+                    </p>
+                    <p>
+                        <label for="raza">Raza</label>
+                        <input type="text" id="raza" autocomplete="off">
+                        <p id="errorRazaRequerido" class="miError">La raza es requerida</p>
+                    </p>
+                    <p>
+                        <input class="btn" type="button" value="Registrar" id="registrar">
+                    </p>
+                    <p>
+                        <input class="btn" type="button" value="Modificar" id="modificar">
+                    </p>
+                    <p>
+                        <input class="btn" type="button" value="Cancelar" id="cancelar">
+                    </p>
+                </form>
+            </div>
+            <div class="datos-mascota">
+                <table >
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Nombre</th>
+                            <th>edad</th>
+                            <th>Raza</th>
+                            <th colspan="2" >Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="datosTabla">
+                        <!-- <tr>
+                            <td>1</td>
+                            <td>Rambo</td>
+                            <td>3</td>
+                            <td>Canino</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+
+                <div id="msgalert">Sin datos</div>
+            </div>
+        </div>
+        
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
