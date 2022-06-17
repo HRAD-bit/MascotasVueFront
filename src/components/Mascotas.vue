@@ -2,7 +2,9 @@
   {{ check() }}
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img class="logoSvg" src="../../public/img/petsLogo.svg" alt=""></a>
+      <a class="navbar-brand" href="#"
+        ><img class="logoSvg" src="../../public/img/petsLogo.svg" alt=""
+      /></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -313,19 +315,48 @@ export default {
     },
     deletepets(i) {
       var me = this;
-      let ask = confirm("¿Está seguro de eliminar el registro?");
-      if (ask) {
-        // console.log("http://localhost:8081/api/mascotas/" + i);
-        axios
-          // .delete("http://localhost:8080/mascotas/" + i)
-          .delete("http://localhost:8081/api/mascotas/" + i)
-          // .delete("https://lic-gamma.000webhostapp.com/public/mascotas/", + i)
-          .then((response) => {
-            // console.log(response);
-            me.fillpets();
-          })
-          .catch((error) => console.log("Error ", error));
-      }
+      this.$swal
+        .fire({
+          title: "Deseas eliminar el registro?",
+          text: "No se podrá revertir!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#d33",
+          cancelButtonColor: "#3085d6",
+          confirmButtonText: "Confirmar",
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            // console.log("http://localhost:8081/api/mascotas/" + i);
+            this.$swal.fire(
+              "Deleted!",
+              "Your file has been deleted.",
+              "success"
+            );
+            // .delete("http://localhost:8080/mascotas/" + i)
+            // .delete("https://lic-gamma.000webhostapp.com/public/mascotas/", + i)
+            axios
+              .delete("http://localhost:8081/api/mascotas/" + i)
+
+              .then((response) => {
+                me.fillpets();
+              })
+              .catch((error) => console.log("Error ", error));
+          }
+        });
+      // let ask = confirm("¿Está seguro de eliminar el registro?");
+      // if (ask) {
+      //   // console.log("http://localhost:8081/api/mascotas/" + i);
+      //   axios
+      //     // .delete("http://localhost:8080/mascotas/" + i)
+      //     .delete("http://localhost:8081/api/mascotas/" + i)
+      //     // .delete("https://lic-gamma.000webhostapp.com/public/mascotas/", + i)
+      //     .then((response) => {
+      //       // console.log(response);
+      //       me.fillpets();
+      //     })
+      //     .catch((error) => console.log("Error ", error));
+      // }
     },
     loginRoute() {
       this.check();

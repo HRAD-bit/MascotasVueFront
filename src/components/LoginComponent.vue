@@ -3,7 +3,12 @@
   <div
     class="d-flex flex-column justify-content-center align-items-center my-5"
   >
-  <img src="../../public/img/petsLogo.svg" class="card-img-top" style="max-height: 300px; max-width: 300px;;" alt="">
+    <img
+      src="../../public/img/petsLogo.svg"
+      class="card-img-top"
+      style="max-height: 300px; max-width: 300px ;"
+      alt=""
+    />
     <form>
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
@@ -39,7 +44,8 @@
         <label class="form-check-label" for="exampleCheck1">Recuerdame</label>
       </div>
       <div id="" class="form-text m-auto my-3">
-        ¿No estás registrado? <router-link :to="{ name: 'register'}">Registrate</router-link>
+        ¿No estás registrado?
+        <router-link :to="{ name: 'register' }">Registrate</router-link>
       </div>
       <button class="btn btn-primary" @click="login()">Ingresar</button>
     </form>
@@ -115,10 +121,16 @@ export default {
             localStorage.setItem("email", response.data.email);
             // console.log(response.data);
             me.$router.push({ name: "mascotas" });
+            me.$swal.fire('Sesión iniciada!', 'Bienvenido '+me.loginData.email, 'success')
           }
           //   this.$cookie.set("jwt", response.data.cookie)
         })
         .catch(function (error) {
+          me.$swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Usuario y/o contraseña incorrectos!"
+          });
           console.log(error);
           // this.logFailStatus = "true";
         });

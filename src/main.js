@@ -9,12 +9,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/js/bootstrap.bundle.js";
+import VueSweetalert2 from "vue-sweetalert2";
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 //Componentes
 import Mascotas from "../src/components/Mascotas.vue";
 import Login from "../src/components/LoginComponent.vue";
 import Register from "../src/components/RegisterComponent.vue";
-
 
 // /Definir las rutas con objeto de rutas -- Config
 const routes = [
@@ -31,7 +32,7 @@ const routes = [
   {
     path: "/register",
     component: Register,
-    name: "register"
+    name: "register",
   },
 ];
 
@@ -44,4 +45,5 @@ const router = createRouter({
 // Instancia de Vue
 const app = createApp(App);
 app.use(router);
+app.use(VueSweetalert2);
 app.mount("#app");
