@@ -4,6 +4,10 @@
 ```
 npm install
 ```
+## Install Axios
+```
+npm i axios --save
+```
 
 ### Compiles and hot-reloads for development
 ```
