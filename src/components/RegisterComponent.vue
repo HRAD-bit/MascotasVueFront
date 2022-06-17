@@ -65,6 +65,7 @@
 
 <script>
 const axios = require("axios").default;
+var URL = "http://servertics.ddns.net:8081";
 export default {
   data() {
     return {
@@ -98,7 +99,7 @@ export default {
         },
       };
       axios
-        .post("http://localhost:8081/api/register", me.registerData, config)
+        .post(URL+"/api/register", me.registerData, config)
         .then(function (response) {
           if (response.status == 200) {
               console.log(response);

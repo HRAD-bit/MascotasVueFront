@@ -198,6 +198,7 @@
 </template>
 <script>
 const axios = require("axios").default;
+var URL = "http://servertics.ddns.net:8081";
 export default {
   data() {
     return {
@@ -238,7 +239,7 @@ export default {
 
       axios
         // .post("http://localhost:8080/mascotas", form)
-        .post("http://localhost:8081/api/mascotas/", me.mascotaslocal)
+        .post(URL+"/api/mascotas/", me.mascotaslocal)
         // .post("https://lic-gamma.000webhostapp.com/public/mascotas/", form)
         .then(function (response) {
           console.log(response);
@@ -253,7 +254,7 @@ export default {
     fillpets() {
       // bootbox.alert("This is the default alert!");
       // axios.get("http://localhost:8080/mascotas").then((response) => {
-      axios.get("http://localhost:8081/api/mascotas/").then((response) => {
+      axios.get(URL+"/api/mascotas/").then((response) => {
         // axios.get("https://lic-gamma.000webhostapp.com/public/mascotas/").then((response) => {
         this.mascotas = response.data;
         // console.log("Se arrojó el dato\n");
@@ -277,7 +278,7 @@ export default {
       axios
         // .post("http://localhost:8080/mascotas/" + me.mascotaslocal.id, form)
         .put(
-          "http://localhost:8081/api/mascotas/" + me.mascotaslocal.id,
+          URL+"/api/mascotas/" + me.mascotaslocal.id,
           me.mascotaslocal
         )
         // .post("https://lic-gamma.000webhostapp.com/public/mascotas/", + this.mascotaslocal.id, form)
@@ -336,7 +337,7 @@ export default {
             // .delete("http://localhost:8080/mascotas/" + i)
             // .delete("https://lic-gamma.000webhostapp.com/public/mascotas/", + i)
             axios
-              .delete("http://localhost:8081/api/mascotas/" + i)
+              .delete(URL+"/api/mascotas/" + i)
 
               .then((response) => {
                 me.fillpets();
@@ -363,7 +364,7 @@ export default {
       this.$router.push({ name: "login" });
     },
     logout() {
-      axios.get("http://localhost:8081/api/logout").then((response) => {
+      axios.get(URL+"/api/logout").then((response) => {
         // console.log(response.data);
         localStorage.clear();
         this.$router.push({ name: "login" });

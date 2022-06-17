@@ -78,6 +78,7 @@
 
 <script>
 const axios = require("axios").default;
+var URL = "http://servertics.ddns.net:8081";
 export default {
   data() {
     return {
@@ -114,7 +115,7 @@ export default {
         },
       };
       axios
-        .post("http://localhost:8081/api/login", me.loginData, config)
+        .post(URL+"/api/login", me.loginData, config)
         .then(function (response) {
           if (response.status == 200) {
             localStorage.setItem("jwt", response.data.token);
