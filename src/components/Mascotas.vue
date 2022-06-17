@@ -239,13 +239,18 @@ export default {
 
       axios
         // .post("http://localhost:8080/mascotas", form)
-        .post(URL+"/api/mascotas/", me.mascotaslocal)
+        .post(URL + "/api/mascotas/", me.mascotaslocal)
         // .post("https://lic-gamma.000webhostapp.com/public/mascotas/", form)
         .then(function (response) {
           console.log(response);
           me.fillpets();
           me.show = false;
           me.showRegister = false;
+          me.$swal.fire(
+            "Mascota insertada!",
+            "Bienvenid@ " + me.mascotaslocal.nombre,
+            "success"
+          );
         })
         .catch(function (error) {
           console.log(error);
@@ -254,7 +259,7 @@ export default {
     fillpets() {
       // bootbox.alert("This is the default alert!");
       // axios.get("http://localhost:8080/mascotas").then((response) => {
-      axios.get(URL+"/api/mascotas/").then((response) => {
+      axios.get(URL + "/api/mascotas/").then((response) => {
         // axios.get("https://lic-gamma.000webhostapp.com/public/mascotas/").then((response) => {
         this.mascotas = response.data;
         // console.log("Se arrojó el dato\n");
@@ -277,16 +282,14 @@ export default {
 
       axios
         // .post("http://localhost:8080/mascotas/" + me.mascotaslocal.id, form)
-        .put(
-          URL+"/api/mascotas/" + me.mascotaslocal.id,
-          me.mascotaslocal
-        )
+        .put(URL + "/api/mascotas/" + me.mascotaslocal.id, me.mascotaslocal)
         // .post("https://lic-gamma.000webhostapp.com/public/mascotas/", + this.mascotaslocal.id, form)
         .then(function (response) {
           // console.log(response);
           me.fillpets();
           me.show = false;
           me.showRegister = false;
+          me.$swal.fire("Mascota editada exitosamente!", "", "success");
         })
         .catch(function (error) {
           // console.log(error);
@@ -337,7 +340,7 @@ export default {
             // .delete("http://localhost:8080/mascotas/" + i)
             // .delete("https://lic-gamma.000webhostapp.com/public/mascotas/", + i)
             axios
-              .delete(URL+"/api/mascotas/" + i)
+              .delete(URL + "/api/mascotas/" + i)
 
               .then((response) => {
                 me.fillpets();
@@ -364,9 +367,10 @@ export default {
       this.$router.push({ name: "login" });
     },
     logout() {
-      axios.get(URL+"/api/logout").then((response) => {
+      axios.get(URL + "/api/logout").then((response) => {
         // console.log(response.data);
         localStorage.clear();
+        me.$swal.fire("Sesión finalizada!", "", "success");
         this.$router.push({ name: "login" });
         // this.$cookie.delete("jwt")
       });

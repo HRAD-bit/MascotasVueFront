@@ -106,6 +106,7 @@ export default {
             localStorage.setItem("jwt", response.data.token);
             localStorage.setItem("email", response.data.email);
             // console.log(response.data);
+            me.$swal.fire('Registro exitoso!', 'Bienvenido '+me.loginData.email, 'success')
             me.$router.push({ name: "mascotas" });
           }
         })
